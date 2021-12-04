@@ -89,5 +89,7 @@ const getWinners = ( returnFirst = true ) => {
     return answer;
   }
 }
+// Answer part 1
 console.log( getWinners( true ) );
+// Answer part 2
 console.log( getWinners( false ) );
