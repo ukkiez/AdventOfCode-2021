@@ -40,13 +40,12 @@ const sumUnmarkedNumbers = ( board, markedNumbers ) => {
 }
 
 const getWinners = ( returnFirst = true ) => {
-  const markedBoardData = {};
+  const markedBoardData = new Array( boards.length );
   for ( let i = 0; i < boards.length; i++ ) {
     markedBoardData[ i ] = {
-      frequency: 0,
       markedNumbers: [],
-      x: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
-      y: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 },
+      x: new Array( 5 ).fill( 0 ),
+      y: new Array( 5 ).fill( 0 ),
       draw: undefined,
     };
   }
@@ -60,14 +59,14 @@ const getWinners = ( returnFirst = true ) => {
         continue;
       }
 
-      markedBoardData[ boardIndex ].frequency++;
       markedBoardData[ boardIndex ].markedNumbers.push( draw );
 
       markedBoardData[ boardIndex ].x[ rowIndex ]++
       markedBoardData[ boardIndex ].y[ columnIndex ]++;
 
-      if ( markedBoardData[ boardIndex ].frequency >= 5 ) {
-        for ( const value of Object.values( markedBoardData[ boardIndex ].y ).concat( Object.values( markedBoardData[ boardIndex ].x ) ) ) {
+      const frequencies = markedBoardData[ boardIndex ].x.concat( markedBoardData[ boardIndex ].y );
+      if ( frequencies.includes( 5 ) ) {
+        for ( const value of frequencies ) {
           if ( value >= 5 ) {
             if ( !returnFirst ) {
               winnerIndexes.push( boardIndex );
@@ -89,6 +88,7 @@ const getWinners = ( returnFirst = true ) => {
     return answer;
   }
 }
+
 // Answer part 1
 console.log( getWinners( true ) );
 // Answer part 2
