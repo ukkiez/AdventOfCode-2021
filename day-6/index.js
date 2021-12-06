@@ -19,7 +19,5 @@ const calculatePopulation = ( days ) => {
   return populationByTimerState.reduce( ( a, c ) => a + c );
 }
 
-// Answer part 1
-console.log( calculatePopulation( 80 ) );
-// Answer part 2
-console.log( calculatePopulation( 256 ) );
+console.log( "Answer part 1: ", calculatePopulation( 80 ) );
+console.log( "Answer part 2: ", calculatePopulation( 256 ) );
