@@ -119,5 +119,4 @@ for ( const lowPoint of lowPoints ) {
 }
 
 lowPoints.sort( ( a, b ) => b.cache.size - a.cache.size );
-// console.log( lowPoints.map( e => e.cache ) );
 console.log( "Answer part 2: ", lowPoints[ 0 ].cache.size * lowPoints[ 1 ].cache.size * lowPoints[ 2 ].cache.size );
